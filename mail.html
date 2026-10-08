@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Письмо тебе 💌</title>
+<style>
+  body {
+    margin: 0; height: 100vh;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Courier New', monospace;
+  }
+  .letter {
+    background: #fffdf5; padding: 60px; border-radius: 10px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    max-width: 550px; min-height: 250px;
+    border: 2px dashed #d6336c;
+  }
+  #text {
+    font-size: 1.3em; color: #4a4a4a; line-height: 1.8;
+    white-space: pre-wrap;
+  }
+  .cursor { color: #d6336c; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+  <div class="letter">
+    <div id="text"></div>
+  </div>
+  <script>
+    const message = `Привет, любимая 🌸
+
+Я много раз говорил тебе это...
+и понял, что никакие слова не передадут всего.
+Всех чувств, переживаний и мыслей.
+
+Поэтому просто знай:
+ты — самое лучшее, что случилось со мной.
+
+Каждый день с тобой — это подарок.
+Я люблю тебя. Бесконечно. 💖
+P.S. Не молчи пожалуйста, по возможности😞`;
+
+    let i = 0;
+    const el = document.getElementById('text');
+    function type() {
+      if (i < message.length) {
+        el.innerHTML = message.slice(0, i+1) + '<span class="cursor">▌</span>';
+        i++;
+        setTimeout(type, 50);
+      } else {
+        el.innerHTML = message + '<span class="cursor">▌</span>';
+      }
+    }
+    setTimeout(type, 500);
+  </script>
+</body>
+</html>
